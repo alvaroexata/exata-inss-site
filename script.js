@@ -1,19 +1,18 @@
-// Mostrar botão de voltar ao topo
+// Mostrar ou esconder botão de voltar ao topo
 window.onscroll = function() {
-  var backToTop = document.getElementById('back-to-top');
+  var topButton = document.getElementById('back-to-top');
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-    backToTop.style.display = "block";
+    topButton.style.display = "block";
   } else {
-    backToTop.style.display = "none";
+    topButton.style.display = "none";
   }
 };
 
-// Scroll suave para âncoras internas
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+// Scroll suave ao clicar nos links do menu
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
     e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
